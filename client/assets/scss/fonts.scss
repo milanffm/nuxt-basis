@@ -1,0 +1,21 @@
+@include font-face("open-sans", "/fonts/OpenSans-Regular", $file-formats: ttf );
+@include font-face("icomoon", "/fonts/icomoon/icomoon", $file-formats: eot svg ttf woff);
+
+body {
+	//font-family: open-sans, Arial, Helvetica, SansSerif;
+	font-family: $base-font-family;
+	color: $c-dark-blue;
+	font-weight: 300;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+	text-transform: uppercase;
+	margin-top: 0;
+	font-family: $headline-font-family;
+}
+
+p {
+
+}

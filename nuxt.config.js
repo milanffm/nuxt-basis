@@ -32,7 +32,9 @@ module.exports = {
 	/*
 	** Global CSS
 	*/
-	css: [],
+	css: [
+		'@/assets/scss/theme.scss'
+	],
 
 	/*
 	** Plugins to load before mounting the App
@@ -51,7 +53,10 @@ module.exports = {
 
 	styleResources: {
 		scss: [
-			'./assets/vars/colors.scss'
+			'./../node_modules/bourbon/core/_bourbon.scss',
+			'./assets/scss/vars/*',
+			'./assets/scss/mixins/*',
+
 		]
 	},
 	/*
