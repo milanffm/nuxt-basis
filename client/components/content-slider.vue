@@ -19,14 +19,29 @@
 					<article>
 						<content select="img:nth-of-type(4)"></content>
 					</article>
-				</div> <!-- .inner -->
-			</div> <!-- #overflow -->
+				</div>  .inner 
+			</div>  #overflow 
 		</div>
-		<label for="slide1"></label>
+		<!--<label for="slide1"></label>
 		<label for="slide2"></label>
 		<label for="slide3"></label>
-		<label for="slide4"></label>
-
+		<label for="slide4"></label>-->
+        <div class='carousel'>
+            <ul class='pane-container'>
+                <li class='pane'>
+                <div class='vertical-center'>1</div>
+                </li>
+                <li class='pane'>
+                <div class='vertical-center'>2</div>
+                </li>
+                <li class='pane'>
+                <div class='vertical-center'>3</div>
+                </li>
+                    <li class='pane'>
+                <div class='vertical-center'>4</div>
+                </li>
+            </ul>
+        </div>
 	</div>
 </template>
 
@@ -40,7 +55,7 @@ export default {
 
     data(){
 		return {
-			bodyClass: null,
+            bodyClass: null,
 		}
 	},
 	created() {
@@ -54,7 +69,19 @@ export default {
 		}
 	},
 	methods: {
-		contentSliderInizialiese(){
+		carousel(selector){
+
+                /*var self = this;
+                var $carousel = document.querySelector(selector);
+                var $container = document.querySelector('pane-container', selector);
+                var $panes = document.querySelector('.pane', selector);
+
+                var paneWidth = 0;
+                var paneCount = $panes.length;
+                var panBoundary = .25; // if the pane is paned .25, switch to the next pane.
+
+                var currentPane = 0;*/
+
                 var sliderEl = document.querySelector('.slider'); // NEW: our element
                 var slideCount = 3; // NEW: the total # of slides
                 var sliderManager = new Hammer.Manager(sliderEl);
@@ -146,47 +173,5 @@ export default {
 	#slide4:checked ~ label[for="slide4"] {
 		background: #333;
 	}
-
-    
-
-    *{
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: auto 100%;
-    }
-    
-
-    body{
-        background-color: black;
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-    .slider{
-        display: flex;
-        width: 100% * $sliderCards;
-    }
-    .slider-panel{
-        padding-top: 10%;
-        width: 100%;
-    }
-    .has-slider{
-        overflow: hidden;
-        width: 100%;
-    }
-    .colophon{
-        color: #808080;
-        padding-bottom: 1em;
-        padding-top: 1em;
-        text-align: center;
-    }
-    a{
-        color: white;
-        font-size: 14px;
-        letter-spacing: 0.125em;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-    
 
 </style>
