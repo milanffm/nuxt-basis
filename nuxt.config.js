@@ -22,8 +22,6 @@ module.exports = {
 		]
 	},
 
-	srcDir: 'client/',
-
 	/*
 	** Customize the progress-bar color
 	*/
@@ -33,7 +31,7 @@ module.exports = {
 	** Global CSS
 	*/
 	css: [
-		'@/assets/scss/theme.scss'
+		'~/assets/scss/theme.scss'
 	],
 
 	/*
@@ -53,9 +51,9 @@ module.exports = {
 
 	styleResources: {
 		scss: [
-			'./../node_modules/bourbon/core/_bourbon.scss',
-			'./assets/scss/vars/*',
-			'./assets/scss/mixins/*',
+			'~/node_modules/bourbon/core/_bourbon.scss',
+			'~/assets/scss/vars/*',
+			'~/assets/scss/mixins/*',
 
 		]
 	},
