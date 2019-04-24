@@ -2,7 +2,7 @@
 	<section class="container">
 		<div>
 			<h1 class="title">Home</h1>
-			<h2 class="subtitle">website to book apartments in sitia</h2>
+			<h2 class="subtitle">basis nuxt site</h2>
 		</div>
 	</section>
 </template>
