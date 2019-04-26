@@ -1,4 +1,4 @@
-const pkg = require('./package')
+const pkg = require('./package');
 
 
 module.exports = {
@@ -37,7 +37,11 @@ module.exports = {
 	/*
 	** Plugins to load before mounting the App
 	*/
-	plugins: ['~/plugins/repository'],
+	plugins: [
+		'~/plugins/global',
+		'~/plugins/repository',
+		{ src:  '~/plugins/hammer.directive', mode: 'client'}
+	],
 
 	/*
 	** Nuxt.js modules
