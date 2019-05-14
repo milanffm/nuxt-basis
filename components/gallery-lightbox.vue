@@ -57,7 +57,7 @@ export default {
 	methods: {
 
 		next() {
-			if (this.currentIndex > this.itemsCount) {
+			if (this.currentIndex + 1 >= this.itemsCount) {
 				return
 			}
 			this.currentIndex += 1;
