@@ -8,7 +8,7 @@ export const mutations = {
 		console.log('SET POST');
 		state.posts = posts
 	}
-}
+};
 
 export const actions = {
 	async getPosts({commit}) {
@@ -21,8 +21,8 @@ export const actions = {
 	async set({commit}, post) {
 		await commit('set', post)
 	}
-}
+};
 
 export const getters = {
 	getPosts: (state) => state.posts,
-}
+};
