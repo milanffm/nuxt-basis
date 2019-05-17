@@ -57,14 +57,14 @@ export default {
 	methods: {
 
 		next() {
-			if (this.currentIndex + 1 >= this.itemsCount) {
+			if (this.currentIndex + 1 >= this.itemsCount || this.itemsCount < 2) {
 				return
 			}
 			this.currentIndex += 1;
 			console.log(this.currentIndex, this.itemsCount);
 		},
 		prev() {
-			if (this.currentIndex < 1) {
+			if (this.currentIndex < 1 || this.itemsCount < 2) {
 				return
 			}
 			this.currentIndex -= 1;
