@@ -1,7 +1,7 @@
 <template>
 	<transition name="modal">
 		<div class="modal-mask">
-			<div class="modal-wrapper">
+			<div class="modal-wrapper" @click="closeOutside($event)">
 				<div class="modal-container">
 					<div class="modal-content">
 						<div class="modal-head">
@@ -24,7 +24,14 @@
 
 <script>
 export default {
-	name: 'modal'
+	name: 'modal',
+	methods: {
+		closeOutside(e){
+			if (e.target.classList.contains('modal-wrapper')) {
+				this.$emit('close');
+			}
+		}
+	}
 }
 </script>
 
@@ -73,6 +80,7 @@ export default {
 		@include position(absolute, 1.5vh 5% null null);
 		top: .80vh;
 		right: 63px;
+		cursor: pointer;
 		&:before {
 			color: $white;
 			font-size: $icon-big-font-size;
