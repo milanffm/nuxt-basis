@@ -1,5 +1,5 @@
 
-@mixin new-transition($transitionvalues) {
+@mixin new-transition($transitionvalues: $base-transition) {
 	@include prefixer(transition, $transitionvalues, webkit moz spec);
 }
 
@@ -10,7 +10,5 @@
 	/* Non standard for WebKit */
 	word-break: break-word;
 
-	-webkit-hyphens: auto;
-	-moz-hyphens: auto;
-	hyphens: auto;
+	@include prefixer(hyphens, auto, webkit moz ms spec)
 }
