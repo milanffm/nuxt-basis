@@ -1,5 +1,10 @@
 const pkg = require('./package');
 
+const features = [
+	'fetch',
+	'Object.entries',
+	'IntersectionObserver',
+].join('%2C');
 
 module.exports = {
 	mode: 'universal',
@@ -12,6 +17,9 @@ module.exports = {
 	},
 	head: {
 		title: pkg.name,
+		htmlAttrs: {
+			lang: 'de',
+		},
 		meta: [
 			{charset: 'utf-8'},
 			{name: 'viewport', content: 'width=device-width, initial-scale=1'},
@@ -19,13 +27,25 @@ module.exports = {
 		],
 		link: [
 			{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
-		]
+		],
+		script: [
+			{ src: `https://polyfill.io/v3/polyfill.min.js?features=${features}`, body: true },
+		],
+	},
+
+	/*
+	** Customize manifest.json
+	*/
+	manifest: {
+		lang: 'de',
+		"background_color": "#fff",
+		"theme_color": "#000",
 	},
 
 	/*
 	** Customize the progress-bar color
 	*/
-	loading: {color: '#fff'},
+	loading: {color: '#ccc'},
 
 	/*
 	** Global CSS
