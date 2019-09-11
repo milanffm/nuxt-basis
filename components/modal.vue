@@ -62,7 +62,7 @@ export default {
 		width: 80%;
 		margin: 0px auto;
 		padding: 5vw;
-		transition: all .3s ease;
+		transition: all .5s ease;
 		overflow: auto;
 		display: table;
 		text-align: center;
@@ -76,7 +76,7 @@ export default {
 		overflow: auto;
 	}
 	.modal-close {
-		@include icon('icon-close1');
+		@include icon('icon-close');
 		@include position(absolute, 1.5vh 5% null null);
 		top: .80vh;
 		right: 63px;
@@ -100,11 +100,7 @@ export default {
 	.modal-enter-active, .modal-leave-active {
 		transition: opacity .5s;
 	}
-	.modal-enter {
-		opacity: 0;
-	}
-
-	.modal-leave-active {
+	.modal-enter, .modal-leave-active {
 		opacity: 0;
 	}
 
