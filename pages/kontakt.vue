@@ -7,7 +7,7 @@
 		</div>
 		<modal v-show="showModal" @close="showModal = false">
 			<div slot="body">
-				<p>
+				<p>body</p>
 			</div>
 		</modal>
 	</section>
