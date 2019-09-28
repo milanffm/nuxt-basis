@@ -3,7 +3,7 @@
         <div>
             <h1 class="title">Home</h1>
             <h2 class="subtitle">basis nuxt site</h2>
-            <img v-for="(image, index) in images " v-on:click="showLightBox(index)" :src="image" />
+            <img v-for="(image, index) in images " :key="index" v-on:click="showLightBox(index)" :src="image" />
         </div>
         <light-box
             v-if="showModal"
@@ -21,7 +21,7 @@ export default {
         return {
             showModal: false,
             images: [
-                "https://via.placeholder.com/150",
+                'https://via.placeholder.com/150',
                 "https://via.placeholder.com/250",
                 "https://via.placeholder.com/350"
             ],
