@@ -3,6 +3,7 @@
 		<div>
 			<h1 class="title">Home</h1>
 			<h2 class="subtitle">basis nuxt site</h2>
+
 			<img
 				v-for="(image, index) in images"
 				:key="index"
@@ -20,9 +21,6 @@
 </template>
 <script>
 import { mapState } from 'vuex';
-
-console.log(modal);
-
 export default {
 	data() {
 		return {
