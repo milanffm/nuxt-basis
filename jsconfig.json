@@ -1,20 +1,38 @@
 {
 	"compilerOptions": {
-		"target": "es5",
+		"module": "commonjs",
+		"target": "es6",
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["./*"],
-			"@/*": ["./*"],
-			"~~/*": ["./*"],
-			"@@/*": ["./*"]
+			"~/*": [
+				"./*"
+			],
+			"@/*": [
+				"./*"
+			],
+			"~~/*": [
+				"./*"
+			],
+			"@@/*": [
+				"./*"
+			]
 		},
-		"lib": ["dom", "es2015"],
-		"module": "es2015",
+		"lib": [
+			"dom",
+			"es2015"
+		],
 		"moduleResolution": "node",
 		"experimentalDecorators": true,
 		"strict": true,
 		"noUnusedLocals": true,
 		"noUnusedParameters": true
 	},
+	"include": [
+		"/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		"dist"
+	],
 	"compileOnSave": false
 }
