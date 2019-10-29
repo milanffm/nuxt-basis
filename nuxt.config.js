@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 const pkg = require('./package');
 
 const features = [
@@ -5,6 +6,9 @@ const features = [
 	'Object.entries',
 	'IntersectionObserver',
 ].join('%2C');
+
+const apiUrl = process.env.NODE_ENV === 'production' ? 'https://backend.graphicon.de/' : 'http://localhost:1337/';
+
 
 module.exports = {
 	mode: 'universal',
@@ -14,6 +18,7 @@ module.exports = {
 	*/
 	env: {
 		dev: (process.env.NODE_ENV !== 'production'),
+		apiURL: apiUrl
 	},
 	head: {
 		title: pkg.name,
@@ -21,12 +26,15 @@ module.exports = {
 			lang: 'de',
 		},
 		meta: [
-			{charset: 'utf-8'},
-			{name: 'viewport', content: 'width=device-width, initial-scale=1'},
-			{hid: 'description', name: 'description', content: pkg.description}
+			{ charset: 'utf-8' },
+			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+			{ hid: 'description', name: 'description', content: 'Basis Meta Description' },
+			{ hid: 'keywords', name: 'keywords', content: 'Keyword 1, Keyword 2' },
+			{ hid: 'og:description', name: 'og:description', content: 'Basis Meta Description' },
+
 		],
 		link: [
-			{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
 		],
 		script: [
 			{ src: `https://polyfill.io/v3/polyfill.min.js?features=${features}`, body: true },
@@ -34,18 +42,27 @@ module.exports = {
 	},
 
 	/*
-	** Customize manifest.json
-	*/
-	manifest: {
-		lang: 'de',
-		"background_color": "#fff",
-		"theme_color": "#000",
+		** change pwa properties
+		*/
+	pwa: {
+		meta: {
+			author: 'graphicon'
+		},
+		manifest: {
+			name: 'Nuxt Basis',
+			short_name: 'Nuxt Basis',
+			description: 'Basis Meta Description',
+			lang: 'de',
+			'background_color': '#fff',
+			'theme_color': '#ff00ff',
+		}
 	},
+
 
 	/*
 	** Customize the progress-bar color
 	*/
-	loading: {color: '#ccc'},
+	loading: { color: '#ff00ff' },
 
 	/*
 	** Global CSS
@@ -60,7 +77,7 @@ module.exports = {
 	plugins: [
 		'~/plugins/global',
 		'~/plugins/repository',
-		{ src:  '~/plugins/hammer.directive', mode: 'client'}
+		{ src: '~/plugins/hammer.directive', mode: 'client' }
 	],
 
 	/*
@@ -86,7 +103,7 @@ module.exports = {
 	*/
 	axios: {
 		// See https://github.com/nuxt-community/axios-module#options
-		baseURL: process.env.NODE_ENV !== 'production' ? 'http://localhost:1337/' : 'http://localhost:1337/',
+		baseURL: apiUrl,
 	},
 
 	/*
@@ -96,8 +113,5 @@ module.exports = {
 		/*
 		** You can extend webpack config here
 		*/
-		extend(config, ctx) {
-
-		}
 	}
 }
