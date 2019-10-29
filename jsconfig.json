@@ -3,14 +3,30 @@
 		"experimentalDecorators": true,
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["./*"],
-			"@/*": ["./*"],
-			"~~/*": ["./*"],
-			"@@/*": ["./*"],
-			"/": ["./static/*"]
+			"~/*": [
+				"./*"
+			],
+			"@/*": [
+				"./*"
+			],
+			"~~/*": [
+				"./*"
+			],
+			"@@/*": [
+				"./*"
+			],
+			"img/*": [
+				"./static/img/*"
+			]
 		}
 	},
-	"include": ["/**/*"],
-	"exclude": ["node_modules", ".nuxt", "dist"],
+	"include": [
+		"/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		".nuxt",
+		"dist"
+	],
 	"compileOnSave": false
 }
