@@ -5,22 +5,24 @@
             <p>Kontakt Seite</p>
             <p @click="showModal = true">show Modal</p>
         </div>
-        <modal
+        <img
+            src="."
+            <modal-item
             v-show="showModal"
             @close="showModal = false"
         >
-            <div slot="body">
-                <p>modal body</p>
-                <p>modal body</p>
-                <p>modal body</p>
-                <p>modal body</p>
-                <p>modal body</p>
-                <p>modal body</p>
-                <p>modal body</p>
-                <p>modal body</p>
-                <p>modal body</p>
-            </div>
-        </modal>
+        <div slot="body">
+            <p>modal body</p>
+            <p>modal body</p>
+            <p>modal body</p>
+            <p>modal body</p>
+            <p>modal body</p>
+            <p>modal body</p>
+            <p>modal body</p>
+            <p>modal body</p>
+            <p>modal body</p>
+        </div>
+        </modal-item>
     </section>
 </template>
 

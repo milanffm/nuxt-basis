@@ -8,19 +8,19 @@
 			<div id="overflow">
 				<div class="inner">
 					<article>
-						<content select="img:nth-of-type(1)"></content>
+						<content select="img:nth-of-type(1)"/>
 					</article>
 					<article>
-						<content select="img:nth-of-type(2)"></content>
+						<content select="img:nth-of-type(2)"/>
 					</article>
 					<article>
-						<content select="img:nth-of-type(3)"></content>
+						<content select="img:nth-of-type(3)"/>
 					</article>
 					<article>
-						<content select="img:nth-of-type(4)"></content>
+						<content select="img:nth-of-type(4)"/>
 					</article>
-				</div>  .inner 
-			</div>  #overflow 
+				</div>  .inner
+			</div>  #overflow
 		</div>
 		<!--<label for="slide1"></label>
 		<label for="slide2"></label>
@@ -50,7 +50,7 @@
 
 
 export default {
-	name: 'ContentSlider',
+	name: 'content-slider',
     replace: true,
 
     data(){
@@ -91,8 +91,8 @@ export default {
                 sliderEl.style.transform = 'translateX(' + percentage + '%)'; // NEW: our CSS transform
             });
 		}
-	}   
-    
+	}
+
 }
 </script>
 

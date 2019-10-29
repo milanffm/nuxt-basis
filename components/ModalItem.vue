@@ -27,7 +27,7 @@
 
 <script>
 export default {
-    name: 'modal',
+    name: 'modal-item',
     methods: {
         closeOutside(e) {
             if (e.target.classList.contains('modal-wrapper')) {

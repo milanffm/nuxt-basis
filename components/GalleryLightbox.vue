@@ -8,16 +8,14 @@
 
 							:key="'key' + index"
 							:style="{ backgroundImage: `url('${image}')` }"
-							v-show="currentIndex === index">
-						</div>
+							v-show="currentIndex === index"/>
 					</transition-group>
 				</div>
 				<div class="controller" v-if="itemsCount > 1">
-					<div v-if="currentIndex > 0" class="prev" @click="prev()"></div>
-					<div v-if="currentIndex < itemsCount -1" class="next" @click="next()"></div>
+					<div v-if="currentIndex > 0" class="prev" @click="prev()"/>
+					<div v-if="currentIndex < itemsCount -1" class="next" @click="next()"/>
 				</div>
-				<div class="modal-close" @click="$emit('close')">
-				</div>
+				<div class="modal-close" @click="$emit('close')"/>
 			</div>
 		</div>
 	</transition>
@@ -27,7 +25,7 @@
 
 
 export default {
-	name: 'lightBox',
+	name: 'gallery-lightbox',
 	props: {'currentGalleryIndex': Number, 'images': Array},
 
 	data: function () {

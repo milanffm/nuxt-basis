@@ -12,10 +12,11 @@
             >
         </div>
         <p>
+            <img src="/img/layout/logo.png">
             sdfasdf asdf sdf <br>sdfasfsdfafsd
         </p>
 
-        <light-box
+        <gallery-light-box
             v-if="showModal"
             @close="showModal = false"
             v-bind:images="images"
