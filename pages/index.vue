@@ -13,7 +13,7 @@
         </div>
         <p>
             <img src="/img/layout/logo.png">
-            sdfasdf asdf sdf <br>sdfasfsdfafsd
+            sdfasdf asdf sdf <br>sdfasfsdfafsd sdfasdf asdf sdf <br>sdfasfsdfafsd sdfasdf asdf sdf <br>sdfasfsdfafsd sdfasdf asdf sdf <br>sdfasfsdfafsd sdfasdf asdf sdf <br>sdfasfsdfafsd sdfasdf asdf sdf <br>sdfasfsdfafsd
         </p>
 
         <gallery-light-box

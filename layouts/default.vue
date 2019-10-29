@@ -11,6 +11,7 @@
         </header>
         <h1>Default</h1>
         <nuxt />
+        <cookie-law-component />
     </div>
 </template>
 <script>
