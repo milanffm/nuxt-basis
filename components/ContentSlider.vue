@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-undef */
 <template>
 	<div id="slider">
 		<input checked="" type="radio" name="slider" id="slide1" selected="false">
@@ -81,10 +83,13 @@ export default {
                 var panBoundary = .25; // if the pane is paned .25, switch to the next pane.
 
                 var currentPane = 0;*/
+				console.log(selector);
 
                 var sliderEl = document.querySelector('.slider'); // NEW: our element
-                var slideCount = 3; // NEW: the total # of slides
+				var slideCount = 3; // NEW: the total # of slides
+				// eslint-disable-next-line no-undef
                 var sliderManager = new Hammer.Manager(sliderEl);
+                // eslint-disable-next-line no-undef
                 sliderManager.add(new Hammer.Pan({ threshold: 0, pointers: 0 }) );
                 sliderManager.on('pan', function(e) {
                 var percentage = 100 / slideCount * e.deltaX / window.innerWidth; // NEW: our % calc
