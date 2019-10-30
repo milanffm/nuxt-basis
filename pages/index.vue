@@ -10,12 +10,10 @@
                 v-on:click="showLightBox(index)"
                 :src="image"
             >
-        </div>
+        </div> 
         <p>
-            <img src="/img/layout/logo.png">
             sdfasdf asdf sdf <br>sdfasfsdfafsd sdfasdf asdf sdf <br>sdfasfsdfafsd sdfasdf asdf sdf <br>sdfasfsdfafsd sdfasdf asdf sdf <br>sdfasfsdfafsd sdfasdf asdf sdf <br>sdfasfsdfafsd sdfasdf asdf sdf <br>sdfasfsdfafsd
         </p>
-
         <gallery-light-box
             v-if="showModal"
             @close="showModal = false"

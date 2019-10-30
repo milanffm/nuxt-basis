@@ -41,8 +41,6 @@
 </template>
 <script>
 
-
-
 export default {
     name: 'gallery-lightbox',
     props: { 'currentGalleryIndex': Number, 'images': Array },
