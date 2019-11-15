@@ -1,6 +1,6 @@
-# planiatrion
+# nuxt basis
 
-> planitarion appartments
+> nuxt basis repository
 
 ## Build Setup
 
