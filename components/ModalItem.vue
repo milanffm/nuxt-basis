@@ -1,7 +1,7 @@
 <template>
     <transition
         name="modal-wrapper">
-        <div class="modal-mask">
+        <div class="modal-mask" v-show="showModal">
             <div
                 class="modal-wrapper"
                 @click="closeOutside($event)"
@@ -9,17 +9,23 @@
                 <transition
                     name="modal"
                     @enter="enter"
-                    @leave="leave">
-                        <div class="modal-container" v-show="shoModal">
-                            <div class="modal-content" >
-                                {{startCoordinates}}
-                                <div class="modal-head">
-                                    <slot name="head"/>
+                    @leave="leave"
+                    @after-leave="afterLeave"
+                    >
+                        <div class="modal-container" v-show="showModal">
+                            <transition
+                                name="modal-content"
+                            >
+                                <div class="modal-content" v-show="showModal">
+                                    {{startCoordinates}}
+                                    <div class="modal-head">
+                                        <slot name="head"/>
+                                    </div>
+                                    <div class="modal-body">
+                                        <slot name="body"/>
+                                    </div>
                                 </div>
-                                <div class="modal-body">
-                                    <slot name="body"/>
-                                </div>
-                            </div>
+                            </transition>
                         </div>
                     </transition>
                 <div
@@ -33,78 +39,57 @@
 
 <script>
 export default {
-	name: 'modal-item',
-	props: {
-		startCoordinates: Object,
-        shoModal: Boolean
+	"name": 'modal-item',
+	"props": {
+		"startCoordinates": Object,
+        "showModal": Boolean
 	},
-	methods: {
-		closeOutside(e) {
+	"methods": {
+		"closeOutside"(e) {
 			if (e.target.classList.contains('modal-wrapper')) {
 				this.$emit('close');
 			}
 		},
-		enter(element) {
+		"enter"(element) {
 
-			// Calculate the initial transform to position the item under the user's
-			// cursor (based on the stored mouse-click event).
 			const clickX = this.startCoordinates.x;
 			const clickY = this.startCoordinates.y;
 			const rect = element.getBoundingClientRect();
 			const deltaX = (clickX - rect.left - (rect.width / 2));
 			const deltaY = (clickY - rect.top - (rect.height / 2));
 
-			// Style the item position.
 			element.style.transform = `translateX( ${deltaX}px ) translateY( ${deltaY}px )`;
-			// When we define the initial position of the item, we have to LOCALLY
-			// DEACTIVATE the transition property otherwise the item will never make
-			// it from the static position out to the transformed position.
-			element.style.transition = "none";
+			element.style.transition = 'none';
 
 			// By default, the browser attempts to optimize updates by "chunking" CSS
 			// changes. As such, we have to force the browser to repaint in order to
 			// apply the above styles before we nullify them below.
 			this.__force_paint__ = document.body.offsetHeight;
 
-			// At this point, the browser has rendered the new item at the
-			// transformed location without any transition timing. And, now that we
-			// have configured the initial position, we can nullify the LOCAL STYLE
-			// of the item so that the browser will transition the CSS based on the
-			// "item-enter-to" class.
 			element.style = null;
 		},
-		leave(element) {
+		"leave"(element) {
 
-			// Calculate the initial transform to position the item under the user's
-			// cursor (based on the stored mouse-click event).
 			const clickX = this.startCoordinates.x;
 			const clickY = this.startCoordinates.y;
 			const rect = element.getBoundingClientRect();
 			const deltaX = (clickX - rect.left - (rect.width / 2));
 			const deltaY = (clickY - rect.top - (rect.height / 2));
 
-			// Style the item position.
 			element.style.transform = `translateX( ${deltaX}px ) translateY( ${deltaY}px )`;
-			// When we define the initial position of the item, we have to LOCALLY
-			// DEACTIVATE the transition property otherwise the item will never make
-			// it from the static position out to the transformed position.
-			element.style.transition = "none";
 
-			// By default, the browser attempts to optimize updates by "chunking" CSS
-			// changes. As such, we have to force the browser to repaint in order to
-			// apply the above styles before we nullify them below.
-			this.__force_paint__ = document.body.offsetHeight;
-
-			// At this point, the browser has rendered the new item at the
-			// transformed location without any transition timing. And, now that we
-			// have configured the initial position, we can nullify the LOCAL STYLE
-			// of the item so that the browser will transition the CSS based on the
-			// "item-enter-to" class.
-			element.style = null;
-		}
+			element.style.width = '0%';
+			element.style.height = '0%';
+		},
+        afterLeave(element){
+	        element.style = null;
+        }
 	}
 };
+
 </script>
+
+
 
 <style lang="scss" scoped>
     .modal-mask {
@@ -132,6 +117,7 @@ export default {
     .modal-container {
         width: 80%;
         margin: 0px auto;
+        //TODO find a way width no padding for animation beginning by 0
         padding: 5vw;
         transition: all 0.5s ease;
         overflow: auto;
@@ -159,7 +145,6 @@ export default {
             font-size: $icon-big-font-size;
         }
     }
-
     /*
         * The following styles are auto-applied to elements with
         * transition="modal" when their visibility is toggled
@@ -172,7 +157,6 @@ export default {
     .modal{
         &-enter {
             opacity: 0.0;
-            min-width: 200px;
             width: 0%;
             height: 0%;
 
@@ -182,7 +166,7 @@ export default {
             // hook of the Vue class.
         }
 
-        &-enter-active {
+        &-enter-active,  &-leave-active {
             transition: all .7s ease;
         }
 
@@ -192,13 +176,36 @@ export default {
             height: 90%;
             transform: translateX(0px) translateY(0px);
         }
+
+        &-leave-to {
+            opacity: 1.0;
+            width: 0%;
+            height: 0%;
+        }
     }
 
     .modal-wrapper{
-        &-leave-active, &-enter-active {
-            transition: opacity 0.5s;
+        &-enter-active {
+            transition: opacity .2s;
+        }
+        &-leave-active {
+            transition: opacity .7s;
         }
 
+        &-enter, &-leave-active {
+            opacity: 0;
+        }
+    }
+
+    .modal-content{
+        &-enter-active  {
+
+            transition: opacity .5s ease;
+            transition-delay: .5s;
+        }
+        &-leave-active  {
+            transition: opacity .2s ease;
+        }
         &-enter, &-leave-active {
             opacity: 0;
         }

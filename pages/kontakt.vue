@@ -4,14 +4,18 @@
             <h1 class="title">Kontakt</h1>
             <p>Kontakt Seite</p>
             <p @click="showModalFn($event)">show Modal</p>
-            <br> <br> <br>
+            <br> <br>  <img src="https://via.placeholder.com/500"><br>
+            <br> <br>  <img src="https://via.placeholder.com/500"><br>
+            <br> <br>  <img src="https://via.placeholder.com/500"><br>
+            <br> <br>  <img src="https://via.placeholder.com/500"><br>
+            <br> <br>  <img src="https://via.placeholder.com/500"><br>
+            <br> <br>  <img src="https://via.placeholder.com/500"><br>
             <p @click="showModalFn($event)">show Modal</p>
         </div>
 
         <modal-item
             :start-coordinates="mostRecentClickCoordinates"
-            :sho-modal="showModal"
-            v-show="showModal"
+            :show-modal="showModal"
             @close="showModal = false"
         >
             <div slot="body">
@@ -19,9 +23,10 @@
                 <p>modal body</p>
                 <p>modal body</p>
                 <p>modal body</p>
-
+                <img src="https://via.placeholder.com/500">
                 <p>modal body</p>
                 <p>modal body</p>
+                <img src="https://via.placeholder.com/350">
                 <p>modal body</p>
             </div>
         </modal-item>
@@ -42,18 +47,12 @@ export default {
     mounted() { },
     methods: {
 	    showModalFn( event ) {
-
 		    this.showModal = true;
-
-		    // When Vue applies the "enter" animation for the above item, we want to
-		    // animate it in from the current event's click-location. As such, we
-		    // have store the coordinates for use in the subsequent animation hooks.
 		    this.mostRecentClickCoordinates = {
 			    x: event.clientX,
 			    y: event.clientY
 		    };
 		    console.log(this.mostRecentClickCoordinates.y);
-
 	    },
     }
 };
