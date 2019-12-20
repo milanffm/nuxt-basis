@@ -7,6 +7,8 @@
 
             <nav>
                 <nuxt-link to="/kontakt">Kontakt </nuxt-link>
+                <nuxt-link to="/test">test </nuxt-link>
+                <nuxt-link to="/slider">slider </nuxt-link>
             </nav>
         </header>
         <h1>Default</h1>
