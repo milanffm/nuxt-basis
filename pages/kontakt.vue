@@ -19,7 +19,7 @@
             @close="showModal = false"
         >
             <div slot="body">
-                <p>modal body</p>
+                <p>modal modal bodymodal bodymodal bodymodal bodymodal bodymodal bodymodal bodymodal bodymodal bodymodal bodymodal bodymodal bodymodal bodymodal bodymodal bodymodal body</p>
                 <p>modal body</p>
                 <p>modal body</p>
                 <p>modal body</p>

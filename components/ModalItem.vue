@@ -1,36 +1,26 @@
 <template>
-    <transition
-        name="modal-wrapper">
+    <transition  name="modal-wrapper-animation">
         <div class="modal-mask" v-show="showModal">
-            <div
-                class="modal-wrapper"
-                @click="closeOutside($event)"
-            >
+            <div class="modal-wrapper" @click="closeOutside($event)">
                 <transition
-                    name="modal"
+                    name="modal-animation"
                     @enter="enter"
                     @leave="leave"
-                    @after-leave="afterLeave"
-                    >
-                        <div class="modal-container" v-show="showModal">
-                            <transition
-                                name="modal-content"
-                            >
-                                <div class="modal-content" v-show="showModal">
-                                    {{startCoordinates}}
-                                    <div class="modal-head">
-                                        <slot name="head"/>
-                                    </div>
-                                    <div class="modal-body">
-                                        <slot name="body"/>
-                                    </div>
-                                </div>
-                            </transition>
+                    @after-enter="showInnerContent = true" >
+                    <div class="modal-container" v-if="showModal">
+                        <div class="modal-content" >
+                            <div class="modal-head">
+                                <slot name="head"/>
+                            </div>
+                            <div class="modal-body">
+                                <slot name="body"/>
+                            </div>
                         </div>
-                    </transition>
+                    </div>
+                </transition>
                 <div
                     class="modal-close"
-                    @click="$emit('close')"
+                    @click="close()"
                 />
             </div>
         </div>
@@ -39,18 +29,28 @@
 
 <script>
 export default {
-	"name": 'modal-item',
-	"props": {
-		"startCoordinates": Object,
-        "showModal": Boolean
+	name: 'modal-item',
+	props: {
+		'startCoordinates': Object,
+		'showModal': Boolean
 	},
-	"methods": {
-		"closeOutside"(e) {
+	data () {
+		return {
+			showContent: false
+		}
+	},
+	methods: {
+		closeOutside(e) {
 			if (e.target.classList.contains('modal-wrapper')) {
-				this.$emit('close');
+				this.close();
 			}
 		},
-		"enter"(element) {
+        close(){
+	        this.$emit('close');
+	        this.showContent = false;
+        },
+
+		enter(element) {
 
 			const clickX = this.startCoordinates.x;
 			const clickY = this.startCoordinates.y;
@@ -65,10 +65,9 @@ export default {
 			// changes. As such, we have to force the browser to repaint in order to
 			// apply the above styles before we nullify them below.
 			this.__force_paint__ = document.body.offsetHeight;
-
 			element.style = null;
 		},
-		"leave"(element) {
+		leave(element) {
 
 			const clickX = this.startCoordinates.x;
 			const clickY = this.startCoordinates.y;
@@ -81,15 +80,13 @@ export default {
 			element.style.width = '0%';
 			element.style.height = '0%';
 		},
-        afterLeave(element){
-	        element.style = null;
-        }
+		afterLeave(element) {
+			element.style = null;
+		}
 	}
 };
 
 </script>
-
-
 
 <style lang="scss" scoped>
     .modal-mask {
@@ -101,7 +98,6 @@ export default {
         height: 100%;
         background-color: rgba(0, 0, 0, 0.8);
         display: table;
-        transition: opacity 0.5s ease;
     }
 
     .modal-wrapper {
@@ -117,9 +113,7 @@ export default {
     .modal-container {
         width: 80%;
         margin: 0px auto;
-        //TODO find a way width no padding for animation beginning by 0
-        padding: 5vw;
-        transition: all 0.5s ease;
+        padding: 0;
         overflow: auto;
         height: 90%;
         text-align: center;
@@ -129,8 +123,9 @@ export default {
     }
 
     .modal-content {
-        max-height: 69vh;
-        overflow: auto;
+        padding: 5%;
+        max-height: 80vh;
+        transition: all .5s ease;
     }
 
     .modal-close {
@@ -145,6 +140,7 @@ export default {
             font-size: $icon-big-font-size;
         }
     }
+
     /*
         * The following styles are auto-applied to elements with
         * transition="modal" when their visibility is toggled
@@ -154,20 +150,19 @@ export default {
         * these styles.
         */
 
-    .modal{
+    .modal-animation {
         &-enter {
             opacity: 0.0;
-            width: 0%;
-            height: 0%;
+            width: 10%;
+            height: 10%;
 
-            overflow: hidden;
             // NOTE: Since the initial value of the "transform" property is data-driven
             // based on the Vue-state, we need to calculate the transform in the .enter()
             // hook of the Vue class.
         }
 
-        &-enter-active,  &-leave-active {
-            transition: all .7s ease;
+        &-enter-active, &-leave-active {
+            transition: all .5s ease;
         }
 
         &-enter-to {
@@ -179,33 +174,20 @@ export default {
 
         &-leave-to {
             opacity: 1.0;
-            width: 0%;
-            height: 0%;
+            width: 10%;
+            height: 10%;
         }
     }
 
-    .modal-wrapper{
+    .modal-wrapper-animation {
         &-enter-active {
-            transition: opacity .2s;
+            transition: opacity .3s;
         }
+
         &-leave-active {
             transition: opacity .7s;
         }
 
-        &-enter, &-leave-active {
-            opacity: 0;
-        }
-    }
-
-    .modal-content{
-        &-enter-active  {
-
-            transition: opacity .5s ease;
-            transition-delay: .5s;
-        }
-        &-leave-active  {
-            transition: opacity .2s ease;
-        }
         &-enter, &-leave-active {
             opacity: 0;
         }
