@@ -99,6 +99,9 @@ module.exports = {
 
 		]
 	},
+    generate: {
+        routes: ['404']
+    },
 	/*
 	** Axios module configuration
 	*/
