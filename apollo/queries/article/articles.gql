@@ -1,14 +1,15 @@
 query Articles {
-  articles {
-    id
-    title
-    content
-    published_at
-    image {
-      url
+    articles {
+        id
+        title
+        slug
+        content
+        published_at
+        image {
+            url
+        }
+        category{
+            name
+        }
     }
-    category{
-      name
-    }
-  }
 }

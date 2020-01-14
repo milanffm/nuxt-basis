@@ -1,8 +1,7 @@
 <template>
     <div>
-
         <h1>Strapi blog</h1>
-        <Articles :articles="articles"></Articles>
+        <Articles :articles="articles"/>
     </div>
 </template>
 
@@ -25,10 +24,7 @@ export default {
     apollo: {
         articles: {
             prefetch: true,
-            query: articlesQuery,
-            variables() {
-                return {id: parseInt(this.$route.params.id)}
-            }
+            query: articlesQuery
         }
     }
 }
