@@ -9,10 +9,8 @@ const features = [
 
 const apiUrl = process.env.NODE_ENV === 'production' ? 'https://backend.graphicon.de/' : 'http://localhost:1337/';
 
-
 module.exports = {
 	mode: 'universal',
-
 	/*
 	** Headers of the page
 	*/
@@ -31,7 +29,6 @@ module.exports = {
 			{ hid: 'description', name: 'description', content: 'Basis Meta Description' },
 			{ hid: 'keywords', name: 'keywords', content: 'Keyword 1, Keyword 2' },
 			{ hid: 'og:description', name: 'og:description', content: 'Basis Meta Description' },
-
 		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -40,7 +37,6 @@ module.exports = {
 			{ src: `https://polyfill.io/v3/polyfill.min.js?features=${features}`, body: true },
 		],
 	},
-
 	/*
 		** change pwa properties
 		*/
@@ -58,19 +54,16 @@ module.exports = {
 		}
 	},
 
-
 	/*
 	** Customize the progress-bar color
 	*/
 	loading: { color: '#ff00ff' },
-
 	/*
 	** Global CSS
 	*/
 	css: [
 		'~/assets/scss/theme.scss'
 	],
-
 	/*
 	** Plugins to load before mounting the App
 	*/
@@ -80,7 +73,6 @@ module.exports = {
 		{ src: '~/plugins/hammer.directive', mode: 'client' },
 		{ src: '~/plugins/vue-matomo', mode: 'client' },
 	],
-
 	/*
 	** Nuxt.js modules
 	*/
@@ -89,8 +81,8 @@ module.exports = {
 		'@nuxtjs/axios',
 		'@nuxtjs/pwa',
 		'@nuxtjs/style-resources',
+        '@nuxtjs/apollo'
 	],
-
 	styleResources: {
 		scss: [
 			'~/node_modules/bourbon/core/_bourbon.scss',
@@ -99,6 +91,13 @@ module.exports = {
 
 		]
 	},
+    apollo: {
+        clientConfigs: {
+            default: {
+                httpEndpoint: process.env.BACKEND_URL || "http://localhost:1337/graphql"
+            }
+        }
+    },
     generate: {
         routes: ['404']
     },
@@ -109,7 +108,6 @@ module.exports = {
 		// See https://github.com/nuxt-community/axios-module#options
 		baseURL: apiUrl,
 	},
-
 	/*
 	** Build configuration
 	*/
@@ -118,4 +116,4 @@ module.exports = {
 		** You can extend webpack config here
 		*/
 	}
-}
+};

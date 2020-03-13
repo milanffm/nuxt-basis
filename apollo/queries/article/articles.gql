@@ -1,0 +1,15 @@
+query Articles {
+    articles {
+        id
+        title
+        slug
+        content
+        published_at
+        image {
+            url
+        }
+        category{
+            name
+        }
+    }
+}
