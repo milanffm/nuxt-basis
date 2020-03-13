@@ -1,4 +1,6 @@
 /* eslint-disable no-undef */
+import axios from '@/.nuxt/axios';
+
 const pkg = require('./package');
 
 const features = [
@@ -99,7 +101,7 @@ module.exports = {
         }
     },
     generate: {
-        routes () {
+        routes (){
             return axios.get(apiUrl + '/articles/')
                 .then((res) => {
                     return res.data.map((article) => {
