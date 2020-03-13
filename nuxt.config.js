@@ -1,5 +1,20 @@
 /* eslint-disable no-undef */
-import axios from '@/.nuxt/axios';
+import axios from 'axios';
+
+const apiUrl = process.env.NODE_ENV === 'production' ? 'http://localhost:1337/' : 'http://localhost:1337/';
+
+let dynamicRoutes = async () => {
+
+    const articles =  await axios.get(`${apiUrl}articles/`);
+
+    const articleRoutes = articles.data.map((article) => {
+        return `/articles/${article._id}`
+    });
+
+    const route404 = '404';
+
+    return  articleRoutes.concat(route404);
+};
 
 const pkg = require('./package');
 
@@ -9,7 +24,7 @@ const features = [
 	'IntersectionObserver',
 ].join('%2C');
 
-const apiUrl = process.env.NODE_ENV === 'production' ? 'https://backend.graphicon.de/' : 'http://localhost:1337/';
+
 
 module.exports = {
 	mode: 'universal',
@@ -101,14 +116,7 @@ module.exports = {
         }
     },
     generate: {
-        routes (){
-            return axios.get(apiUrl + '/articles/')
-                .then((res) => {
-                    return res.data.map((article) => {
-                        return '/articles/' + article.id
-                    })
-                })
-        }
+        routes: dynamicRoutes
     },
 	/*
 	** Axios module configuration
