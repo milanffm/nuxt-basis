@@ -99,7 +99,14 @@ module.exports = {
         }
     },
     generate: {
-        routes: ['404']
+        routes () {
+            return axios.get(apiUrl + '/articles/')
+                .then((res) => {
+                    return res.data.map((article) => {
+                        return '/articles/' + article.id
+                    })
+                })
+        }
     },
 	/*
 	** Axios module configuration
