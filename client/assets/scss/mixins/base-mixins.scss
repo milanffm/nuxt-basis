@@ -1,6 +1,0 @@
-
-@mixin new-transition($transitionvalues) {
-	@include prefixer(transition, $transitionvalues, webkit moz spec);
-}
-
-
