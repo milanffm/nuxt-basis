@@ -1,21 +1,32 @@
 {
 	"compilerOptions": {
-		"target": "es6",
+		"experimentalDecorators": true,
 		"baseUrl": ".",
 		"paths": {
-			"~/*": ["./*"],
-			"/": ["./static/*"],
-			"@/*": ["./*"],
-			"~~/*": ["./*"],
-			"@@/*": ["./*"]
-		},
-		"lib": ["dom", "es2015"],
-		"module": "es2015",
-		"moduleResolution": "node",
-		"experimentalDecorators": true,
-		"strict": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true
+			"~/*": [
+				"./*"
+			],
+			"@/*": [
+				"./*"
+			],
+			"~~/*": [
+				"./*"
+			],
+			"@@/*": [
+				"./*"
+			],
+			"/*": [
+				"./static/*"
+			]
+		}
 	},
+	"include": [
+		"/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		".nuxt",
+		"dist"
+	],
 	"compileOnSave": false
 }

@@ -1,9 +1,11 @@
 
 import Vue from 'vue';
-import Modal from '@/components/modal.vue';
-import ImageSlider from '@/components/content-slider.vue';
-import LightBox from '@/components/gallery-lightbox.vue';
+import ModalItem from '@/components/ModalItem';
+import ContentSlider from '@/components/ContentSlider';
+import GalleryLightbox from '@/components/GalleryLightbox';
+import CookieLawComponent from '@/components/CookieLawComponent'
 
-Vue.component('Modal', Modal);
-Vue.component('ContentSlider', ImageSlider);
-Vue.component('LightBox', LightBox);
+Vue.component('ModalItem', ModalItem);
+Vue.component('ContentSlider', ContentSlider);
+Vue.component('GalleryLightBox', GalleryLightbox);
+Vue.component('CookieLawComponent', CookieLawComponent);

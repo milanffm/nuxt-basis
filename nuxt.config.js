@@ -1,3 +1,21 @@
+/* eslint-disable no-undef */
+import axios from 'axios';
+
+const apiUrl = process.env.NODE_ENV === 'production' ? 'http://localhost:1337/' : 'http://localhost:1337/';
+
+let dynamicRoutes = async () => {
+
+    const articles =  await axios.get(`${apiUrl}articles/`);
+
+    const articleRoutes = articles.data.map((article) => {
+        return `/articles/${article._id}`
+    });
+
+    const route404 = '404';
+
+    return  articleRoutes.concat(route404);
+};
+
 const pkg = require('./package');
 
 const features = [
@@ -6,14 +24,16 @@ const features = [
 	'IntersectionObserver',
 ].join('%2C');
 
+
+
 module.exports = {
 	mode: 'universal',
-
 	/*
 	** Headers of the page
 	*/
 	env: {
 		dev: (process.env.NODE_ENV !== 'production'),
+		apiURL: apiUrl
 	},
 	head: {
 		title: pkg.name,
@@ -21,48 +41,55 @@ module.exports = {
 			lang: 'de',
 		},
 		meta: [
-			{charset: 'utf-8'},
-			{name: 'viewport', content: 'width=device-width, initial-scale=1'},
-			{hid: 'description', name: 'description', content: pkg.description}
+			{ charset: 'utf-8' },
+			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
+			{ hid: 'description', name: 'description', content: 'Basis Meta Description' },
+			{ hid: 'keywords', name: 'keywords', content: 'Keyword 1, Keyword 2' },
+			{ hid: 'og:description', name: 'og:description', content: 'Basis Meta Description' },
 		],
 		link: [
-			{rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
 		],
 		script: [
 			{ src: `https://polyfill.io/v3/polyfill.min.js?features=${features}`, body: true },
 		],
 	},
-
 	/*
-	** Customize manifest.json
-	*/
-	manifest: {
-		lang: 'de',
-		"background_color": "#fff",
-		"theme_color": "#000",
+		** change pwa properties
+		*/
+	pwa: {
+		meta: {
+			author: 'graphicon'
+		},
+		manifest: {
+			name: 'Nuxt Basis',
+			short_name: 'Nuxt Basis',
+			description: 'Basis Meta Description',
+			lang: 'de',
+			'background_color': '#fff',
+			'theme_color': '#ff00ff',
+		}
 	},
 
 	/*
 	** Customize the progress-bar color
 	*/
-	loading: {color: '#ccc'},
-
+	loading: { color: '#ff00ff' },
 	/*
 	** Global CSS
 	*/
 	css: [
 		'~/assets/scss/theme.scss'
 	],
-
 	/*
 	** Plugins to load before mounting the App
 	*/
 	plugins: [
 		'~/plugins/global',
 		'~/plugins/repository',
-		{ src:  '~/plugins/hammer.directive', mode: 'client'}
+		{ src: '~/plugins/hammer.directive', mode: 'client' },
+		{ src: '~/plugins/vue-matomo', mode: 'client' },
 	],
-
 	/*
 	** Nuxt.js modules
 	*/
@@ -71,8 +98,8 @@ module.exports = {
 		'@nuxtjs/axios',
 		'@nuxtjs/pwa',
 		'@nuxtjs/style-resources',
+        '@nuxtjs/apollo'
 	],
-
 	styleResources: {
 		scss: [
 			'~/node_modules/bourbon/core/_bourbon.scss',
@@ -81,14 +108,23 @@ module.exports = {
 
 		]
 	},
+    apollo: {
+        clientConfigs: {
+            default: {
+                httpEndpoint: process.env.BACKEND_URL || "http://localhost:1337/graphql"
+            }
+        }
+    },
+    generate: {
+        routes: dynamicRoutes
+    },
 	/*
 	** Axios module configuration
 	*/
 	axios: {
 		// See https://github.com/nuxt-community/axios-module#options
-		baseURL: process.env.NODE_ENV !== 'production' ? 'http://localhost:1337/' : 'http://localhost:1337/',
+		baseURL: apiUrl,
 	},
-
 	/*
 	** Build configuration
 	*/
@@ -96,8 +132,5 @@ module.exports = {
 		/*
 		** You can extend webpack config here
 		*/
-		extend(config, ctx) {
-
-		}
 	}
-}
+};
