@@ -2,6 +2,8 @@
 
 const apiUrl = process.env.NODE_ENV === 'production' ? 'http://localhost:1337/' : 'http://localhost:1337/';
 
+const pkg = require('./package');
+
 const features = [
 	'fetch',
 	'Object.entries',

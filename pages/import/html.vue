@@ -10,9 +10,12 @@
 
 <script>
 
-
+/**
+ * remove comment to import html and install
+ npm install --save turndown
+ */
 //import rawHtml from '~/assets/data/html/68.html';
-import TurndownService from 'turndown';
+//import TurndownService from 'turndown';
 
 export default {
     data() {
