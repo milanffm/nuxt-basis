@@ -1,20 +1,4 @@
 /* eslint-disable no-undef */
-import axios from 'axios';
-
-const apiUrl = process.env.NODE_ENV === 'production' ? 'http://localhost:1337/' : 'http://localhost:1337/';
-
-let dynamicRoutes = async () => {
-
-    const articles =  await axios.get(`${apiUrl}articles/`);
-
-    const articleRoutes = articles.data.map((article) => {
-        return `/articles/${article._id}`
-    });
-
-    const route404 = '404';
-
-    return  articleRoutes.concat(route404);
-};
 
 const pkg = require('./package');
 
@@ -23,8 +7,6 @@ const features = [
 	'Object.entries',
 	'IntersectionObserver',
 ].join('%2C');
-
-
 
 module.exports = {
 	mode: 'universal',
@@ -114,9 +96,6 @@ module.exports = {
                 httpEndpoint: process.env.BACKEND_URL || "http://localhost:1337/graphql"
             }
         }
-    },
-    generate: {
-        routes: dynamicRoutes
     },
 	/*
 	** Axios module configuration
