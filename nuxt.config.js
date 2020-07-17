@@ -1,12 +1,13 @@
 /* eslint-disable no-undef */
 
-const pkg = require('./package');
+const apiUrl = process.env.NODE_ENV === 'production' ? 'http://localhost:1337/' : 'http://localhost:1337/';
 
 const features = [
 	'fetch',
 	'Object.entries',
 	'IntersectionObserver',
 ].join('%2C');
+
 
 module.exports = {
 	mode: 'universal',
