@@ -8,8 +8,6 @@
 import articleQuery from '~/apollo/queries/article/article'
 import Articles from '~/components/Articles'
 
-const moment = require('moment');
-
 export default {
     data() {
         return {
@@ -20,15 +18,15 @@ export default {
     components: {
         Articles
     },
-    apollo: {
-        article: {
-            prefetch: true,
-            query: articleQuery,
-            variables() {
-                console.log(this.$route.params.id);
-                return {id: this.$route.params.id}
-            }
-        }
-    }
+    //apollo: {
+    //    article: {
+    //        prefetch: true,
+    //        query: articleQuery,
+    //        variables() {
+    //            console.log(this.$route.params.id);
+    //            return {id: this.$route.params.id}
+    //       }
+    //    }
+    //}
 }
 </script>

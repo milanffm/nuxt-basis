@@ -21,11 +21,11 @@ export default {
     mounted() {
         console.log(this.articles);
     },
-    apollo: {
-        articles: {
-            prefetch: true,
-            query: articlesQuery
-        }
-    }
+    // apollo: {
+    //     articles: {
+    //         prefetch: true,
+    //         query: articlesQuery
+    //     }
+    // }
 }
 </script>

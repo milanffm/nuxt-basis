@@ -2,14 +2,15 @@
 
 const apiUrl = process.env.NODE_ENV === 'production' ? 'http://localhost:1337/' : 'http://localhost:1337/';
 
-const pkg = require('./package');
-
 const features = [
 	'fetch',
 	'Object.entries',
 	'IntersectionObserver',
 ].join('%2C');
 
+const title = 'Nuxt Basis'
+const metaDescription = 'Basis Meta Description'
+const metaKeywords = 'Keyword 1, Keyword 2'
 
 module.exports = {
 	mode: 'universal',
@@ -20,17 +21,22 @@ module.exports = {
 		dev: (process.env.NODE_ENV !== 'production'),
 		apiURL: apiUrl
 	},
+    telemetry: {
+        enabled: false,
+        consent: true
+    },
 	head: {
-		title: pkg.name,
+		title: title,
 		htmlAttrs: {
 			lang: 'de',
 		},
 		meta: [
 			{ charset: 'utf-8' },
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
-			{ hid: 'description', name: 'description', content: 'Basis Meta Description' },
-			{ hid: 'keywords', name: 'keywords', content: 'Keyword 1, Keyword 2' },
-			{ hid: 'og:description', name: 'og:description', content: 'Basis Meta Description' },
+			{ hid: 'description', name: 'description', content: metaDescription },
+			{ hid: 'keywords', name: 'keywords', content: metaKeywords },
+			{ hid: 'og:description', name: 'og:description', content: metaDescription },
+			{ hid: 'og:title', name: 'og:title', content: title},
 		],
 		link: [
 			{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
@@ -47,9 +53,9 @@ module.exports = {
 			author: 'graphicon'
 		},
 		manifest: {
-			name: 'Nuxt Basis',
-			short_name: 'Nuxt Basis',
-			description: 'Basis Meta Description',
+			name: title,
+			short_name: title,
+			description: metaDescription,
 			lang: 'de',
 			'background_color': '#fff',
 			'theme_color': '#ff00ff',
@@ -111,6 +117,7 @@ module.exports = {
 	** Build configuration
 	*/
 	build: {
+        //analyze: true,
 		/*
 		** You can extend webpack config here
 		*/
