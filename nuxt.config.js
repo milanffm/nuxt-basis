@@ -78,8 +78,8 @@ module.exports = {
 	plugins: [
 		'~/plugins/global',
 		'~/plugins/repository',
-		{ src: '~/plugins/hammer.directive', mode: 'client' },
-		{ src: '~/plugins/vue-matomo', mode: 'client' },
+		//{ src: '~/plugins/hammer.directive', mode: 'client' },
+		//{ src: '~/plugins/vue-matomo', mode: 'client' },
 	],
 	/*
 	** Nuxt.js modules
