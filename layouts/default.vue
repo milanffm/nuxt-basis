@@ -1,5 +1,6 @@
 <template>
     <div>
+        <cookie-law></cookie-law>
         <header>
             <div class="logo">
                 <nuxt-link to="/"><img src="/img/layout/logo.png"></nuxt-link>
@@ -16,8 +17,12 @@
     </div>
 </template>
 <script>
+import CookieLaw from '@/components/CookieLaw'
 export default {
-    components: {},
+
+    components: {
+        CookieLaw
+    },
     computed: {},
     mounted() { },
     methods: {}
