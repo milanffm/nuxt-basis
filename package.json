@@ -11,26 +11,25 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
-    "@nuxtjs/apollo": "^4.0.0-rc19",
-    "@nuxtjs/axios": "^5.5.4",
-    "@nuxtjs/pwa": "^3.0.0-beta.19",
-    "@nuxtjs/style-resources": "^0.1.2",
-    "bourbon": "^5.1.0",
+    "@nuxtjs/apollo": "^4.0.1-rc.3",
+    "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/pwa": "^3.0.2",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "bourbon": "^7.0.0",
     "core-js": "^2.6.10",
-    "cross-env": "^5.2.0",
+    "cross-env": "^7.0.2",
     "express": "^4.16.4",
     "hammerjs": "^2.0.8",
     "normalize.css": "^8.0.1",
     "nuxt": "latest",
-    "vue-matomo": "^3.12.0",
+    "vue-matomo": "^3.14.0-0",
     "vueperslides": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^6.4.0",
-    "eslint-plugin-vue": "^5.2.3",
+    "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.14.1",
-    "nodemon": "^1.18.11",
-    "prettier": "^1.18.2",
-    "sass-loader": "^7.1.0"
+    "nodemon": "^2.0.4",
+    "sass-loader": "^10.0.2"
   }
 }

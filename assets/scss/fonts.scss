@@ -1,5 +1,5 @@
-@include font-face("open-sans", "/fonts/OpenSans-Regular", $file-formats: ttf );
-@include font-face("icomoon", "/fonts/icomoon/icomoon", $file-formats: eot svg ttf woff);
+@include font-face("open-sans", "/fonts/OpenSans-Regular", $file-formats: woff woff2 );
+@include font-face("icomoon", "/fonts/icomoon/icomoon", $file-formats: woff);
 
 body {
 	//font-family: open-sans, Arial, Helvetica, SansSerif;

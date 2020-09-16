@@ -13,7 +13,6 @@ const metaDescription = 'Basis Meta Description'
 const metaKeywords = 'Keyword 1, Keyword 2'
 
 module.exports = {
-	mode: 'universal',
 	/*
 	** Headers of the page
 	*/
