@@ -4,9 +4,7 @@
             theme="dark-lime"
             button-text="OK"
             position="top"
-            transitionName="slideFromTop"
-            v-on:accept="setMatomoConsent()"
-        >
+            transitionName="slideFromTop">
             <div slot="message">
                 Cookies helfen uns unsere Dienstleistungen anzubieten. Wenn Sie unsere Dienstleistungen nutzen, sind Sie damit einverstanden.
                 <nuxt-link to="/datenschutz">Mehr Dazu »</nuxt-link>
@@ -21,13 +19,8 @@ import CookieLaw from 'vue-cookie-law';
 export default {
     name: 'cookie-law-component',
     components: { CookieLaw },
-    methods: {
-        setMatomoConsent() {
-            this.$matomo.rememberConsentGiven();
-        }
-    }
+    methods: { }
 }
-
 </script>
 
 <style lang="scss">

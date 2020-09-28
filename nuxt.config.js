@@ -21,7 +21,7 @@ module.exports = {
 		apiURL: apiUrl
 	},
     telemetry: {
-        enabled: false,
+        enabled: true,
         consent: true
     },
 	head: {
@@ -78,7 +78,6 @@ module.exports = {
 		'~/plugins/global',
 		'~/plugins/repository',
 		//{ src: '~/plugins/hammer.directive', mode: 'client' },
-		//{ src: '~/plugins/vue-matomo', mode: 'client' },
 	],
 	/*
 	** Nuxt.js modules
@@ -88,14 +87,20 @@ module.exports = {
 		'@nuxtjs/axios',
 		'@nuxtjs/pwa',
 		'@nuxtjs/style-resources',
-        '@nuxtjs/apollo'
+        '@nuxtjs/apollo',
+        ['nuxt-matomo',
+            {
+                matomoUrl: '//piwik.graphicon.de/',
+                siteId: 35,
+                cookies: false
+	        }
+	     ],
 	],
 	styleResources: {
 		scss: [
 			'~/node_modules/bourbon/core/_bourbon.scss',
 			'~/assets/scss/vars/*',
-			'~/assets/scss/mixins/*',
-
+			'~/assets/scss/mixins/*'
 		]
 	},
     apollo: {
