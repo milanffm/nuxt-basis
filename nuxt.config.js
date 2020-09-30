@@ -44,6 +44,10 @@ module.exports = {
 			{ src: `https://polyfill.io/v3/polyfill.min.js?features=${features}`, body: true },
 		],
 	},
+    /**
+     * add components from components folder
+     */
+    components: true,
 	/*
 		** change pwa properties
 		*/
@@ -75,9 +79,8 @@ module.exports = {
 	** Plugins to load before mounting the App
 	*/
 	plugins: [
-		'~/plugins/global',
 		'~/plugins/repository',
-		//{ src: '~/plugins/hammer.directive', mode: 'client' },
+		{ src: '~/plugins/hammer.directive', mode: 'client' }
 	],
 	/*
 	** Nuxt.js modules

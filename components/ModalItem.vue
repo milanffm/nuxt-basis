@@ -112,14 +112,15 @@ export default {
 
     .modal-container {
         width: 80%;
-        margin: 0px auto;
+        margin: 0 auto;
         padding: 0;
-        overflow: auto;
+        overflow-y: scroll;
         height: 90%;
         text-align: center;
         max-width: 900px;
         background: $white;
         border-radius: 25px;
+        -webkit-overflow-scrolling: touch;
     }
 
     .modal-content {

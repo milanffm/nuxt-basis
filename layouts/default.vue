@@ -17,12 +17,9 @@
     </div>
 </template>
 <script>
-import CookieLaw from '@/components/CookieLaw'
-export default {
 
-    components: {
-        CookieLaw
-    },
+export default {
+    components: {},
     computed: {},
     mounted() { },
     methods: {}

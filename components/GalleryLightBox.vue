@@ -1,6 +1,6 @@
 <template>
     <transition name="modal">
-        <div class="modal-mask">
+        <div class="modal-mask" @click="closeOutside($event)">
             <div class="modal-wrapper">
                 <div
                     class="modal-container"
@@ -65,28 +65,33 @@ export default {
     },
     watch: {
         currentIndex: function (newVal, oldVal) {
-            console.log('value changed from ' + oldVal + ' to ' + newVal);
+            // console.log('value changed from ' + oldVal + ' to ' + newVal);
             this.active = newVal;
         }
     },
     methods: {
+        closeOutside(event){
+            if (event.target.classList.contains('modal-wrapper') || event.target.classList.contains('modal-mask')) {
+                this.$emit('close');
+            }
+        },
 
         next() {
             if (this.currentIndex + 1 >= this.itemsCount || this.itemsCount < 2) {
                 return
             }
             this.currentIndex += 1;
-            console.log(this.currentIndex, this.itemsCount);
+            // console.log(this.currentIndex, this.itemsCount);
         },
         prev() {
             if (this.currentIndex < 1 || this.itemsCount < 2) {
                 return
             }
             this.currentIndex -= 1;
-            console.log(this.currentIndex, this.itemsCount);
+            // console.log(this.currentIndex, this.itemsCount);
         },
         pan(e) {
-            console.log('EVENT', e.additionalEvent);
+            // console.log('EVENT', e.additionalEvent);
             if (e.isFinal) {
                 if (e.additionalEvent === 'panleft') {
                     this.next()
@@ -130,7 +135,7 @@ export default {
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
-    height: 90vh;
+    height: 85vh;
     overflow: auto;
     position: relative;
 }
@@ -147,7 +152,7 @@ export default {
 .modal-close {
     @include icon("icon-close");
     @include position(absolute, 1.5vh 5% null null);
-    top: 0.8vh;
+    top: 15px;
     right: 63px;
     &:before {
         color: $white;
@@ -191,7 +196,7 @@ export default {
 
 .prev {
     @include icon("icon-cheveron-left");
-    @include position(absolute, 22px null null 5%);
+    @include position(absolute, 0 null null 25px);
 }
 .next {
     @include position(absolute, 0 5% null null);
@@ -229,16 +234,11 @@ export default {
 }
 
 @media all and (max-width: $xsmall-screen) {
-    .prev,
     .next {
-        &:before {
-            font-size: 1.5rem;
-        }
-        cursor: pointer;
+        right: 8%;
     }
-
     .prev {
-        top: 10px;
+       left: 0;
     }
 }
 </style>
