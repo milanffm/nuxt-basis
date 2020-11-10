@@ -120,6 +120,9 @@ module.exports = {
 		// See https://github.com/nuxt-community/axios-module#options
 		baseURL: apiUrl,
 	},
+	generate: {
+        fallback: true
+    },
 	/*
 	** Build configuration
 	*/
